@@ -185,17 +185,20 @@ section ul {
   padding: 0;
 }
 section ul li {
-  display: flex;
-  gap: 0.6rem;
-  padding: 0.28rem 0;
+  position: relative;
+  padding-left: 1rem;
+  padding-top: 0.28rem;
+  padding-bottom: 0.28rem;
   font-size: 0.97rem;
   line-height: 1.65;
+  display: block; /* Allows inline elements to wrap naturally */
 }
 section ul li::before {
   content: "•";
   color: var(--muted);
-  flex-shrink: 0;
-  margin-top: 0.02em;
+  position: absolute;
+  left: 0;
+  top: 0.28rem;
 }
 
 /* Item title (no-link) */
@@ -238,15 +241,17 @@ section ul li::before {
   white-space: nowrap;
 }
 
-/* ═══ DOCS & TOOLS LIST ═══ */
+/* ═══ DOCS, TOOLS & PROJECTS LIST ═══ */
 /* Bullet aligns to title, description below */
 #docs-list li,
-#tools ul li {
+#tools ul li,
+#projects ul li {
   align-items: flex-start;
   padding: 0.35rem 0;
 }
 #docs-list li > div,
-#tools ul li > div {
+#tools ul li > div,
+#projects ul li > div {
   display: flex;
   flex-direction: column;
   gap: 0;
