@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Page Not Found</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&display=swap');
+    
+    :root {
+      --bg: #fcfbf8;
+      --text: #262523;
+      --muted: #757169;
+      --f-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+      --f-sans: 'Inter', -apple-system, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #18191a;
+        --text: #e4e4e7;
+        --muted: #a1a1aa;
+      }
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1 {
+      font-family: var(--f-serif);
+      font-size: 5.5rem;
+      font-weight: 500;
+      line-height: 1;
+      margin: 0 0 0.5rem 0;
+      font-style: italic;
+    }
+    p {
+      font-family: var(--f-sans);
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin: 0 0 2rem 0;
+    }
+    a {
+      font-family: var(--f-sans);
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: opacity 0.2s;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <h1>404</h1>
+  <p>The page you're looking for doesn't exist.</p>
+  <a href="/">← Return home</a>
+</body>
+</html>

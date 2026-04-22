@@ -1,0 +1,30 @@
+# Syahdan Hayyan Alawy
+
+I am a Robotics & AI Engineering student at Universitas Airlangga (batch 2023). I build things at the intersection of hardware and software, ranging from autonomous robots to AI-powered dashboards.
+
+## Projects
+- Solar Panel Tracker & Weather Detection (ESP32, MQTT, IoT) - 2025
+- ESP32-Cam Stream (ESP32, Node.js) - 2025
+- Pallet AMR Simulator (ROS 2, Gazebo, Nav2) - 2025
+- Lane Detection for Autonomous Vehicle (Python, OpenCV) - 2025
+- Loan Default Prediction (CatBoost, SHAP) - 2025
+- WhatsApp Chatbot (Node.js, OpenAI) - 2024
+- JM-BOT Delivery Robot (Embedded, Robotics) - 2025
+- A* Pathfinder — East Java Logistics (JavaScript, AI) - 2025
+- Up/Down Counter 7-Segment (Digital Circuits, IC 555) - 2025
+
+## Tools & Subdomains
+- TEEP Finder (teep.bica.ca): Find TEEP scholarships in one place and get matched!
+- AIPrep (aiprep.bica.ca): AI-powered study platform and material generator.
+- Scraptor (scraptor.bica.ca): Meso-scale web scraping service.
+- Public Drive (drive.bica.ca): My public file archive and project stash.
+
+## Skills
+- Languages: Python, C / C++, HTML / CSS / JavaScript, React
+- Robotics / AI: ROS / ROS 2, Gazebo Sim, Computer Vision, Machine Learning, IoT / ESP32
+- Tools: Git / GitHub, OpenCV, Autodesk Inventor, Soldering, Cloud / VPS
+
+## Contact
+- GitHub: https://github.com/alawyyahdan
+- LinkedIn: https://www.linkedin.com/in/alawyyahdan
+- Email: syahdan.hayyan.alawy-2023@ftmm.unair.ac.id
