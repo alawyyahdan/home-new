@@ -181,6 +181,12 @@
             <span class="doc-desc">My public file archive and project stash.</span>
           </div>
         </li>
+        <li>
+          <div>
+            <a href="#" id="btn-mqtt">Public MQTT Server</a>
+            <span class="doc-desc">Free public MQTT server for IoT and real-time applications.</span>
+          </div>
+        </li>
       </ul>
     </section>
 
@@ -266,6 +272,41 @@
       <div class="pdf-frame-wrap">
         <div class="pdf-loader" id="pdf-loader"></div>
         <iframe id="pdf-iframe" src="" title="PDF Viewer" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MQTT MODAL ═══ -->
+  <div id="mqtt-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="mqtt-title">
+    <div class="modal-box">
+      <button class="modal-close" id="btn-close-mqtt" aria-label="Close MQTT modal">✕</button>
+      <div style="padding-top: 0.5rem;">
+        <h2 id="mqtt-title" style="margin-bottom:0.6rem;">MQTT Server Details</h2>
+        <p style="margin-bottom:1.2rem; font-size:0.95rem;">Use the following connection details for your IoT or
+          real-time applications:</p>
+
+        <div
+          style="text-align: left; background: var(--surface); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border);">
+          <p
+            style="margin-bottom: 0.2rem; font-family: var(--f-sans); font-size: 0.75rem; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.05em; line-height: 1;">
+            <strong>TCP (Default)</strong>
+          </p>
+          <p
+            style="margin-bottom: 1.2rem; font-family: monospace; font-size: 0.95rem; color: var(--text); line-height: 1;">
+            mqtt://mqtt.bica.ca:1900</p>
+
+          <p
+            style="margin-bottom: 0.2rem; font-family: var(--f-sans); font-size: 0.75rem; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.05em; line-height: 1;">
+            <strong>WebSocket (Secure WSS)</strong>
+          </p>
+          <p style="margin-bottom: 0; font-family: monospace; font-size: 0.95rem; color: var(--text); line-height: 1;">
+            wss://wss.bica.ca/mqtt</p>
+        </div>
+
+        <p
+          style="margin-top: 1.2rem; font-family: var(--f-sans); font-size: 0.82rem; color: var(--muted); line-height: 1.55;">
+          <strong>⚠️ Privacy Note:</strong> This is a public sandbox. Please do not send sensitive information.
+        </p>
       </div>
     </div>
   </div>

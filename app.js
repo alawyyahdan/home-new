@@ -280,5 +280,42 @@ function showNotification(msg) {
 
 /* ═══════════════════════ KEYBOARD ═══════════════════════ */
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closePdf(); closeDonate(); }
+  if (e.key === 'Escape') { 
+    closePdf(); 
+    closeDonate(); 
+    document.getElementById('mqtt-overlay')?.classList.add('hidden');
+  }
 });
+
+/* ═══════════════════════ MQTT MODAL ═══════════════════════ */
+const mqttOverlay = document.getElementById('mqtt-overlay');
+const btnMqtt = document.getElementById('btn-mqtt');
+const btnCloseMqtt = document.getElementById('btn-close-mqtt');
+
+if (btnMqtt) {
+  btnMqtt.addEventListener('click', e => {
+    e.preventDefault();
+    if (mqttOverlay) {
+      mqttOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+}
+
+if (btnCloseMqtt) {
+  btnCloseMqtt.addEventListener('click', () => {
+    if (mqttOverlay) {
+      mqttOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  });
+}
+
+if (mqttOverlay) {
+  mqttOverlay.addEventListener('click', e => {
+    if (e.target === mqttOverlay) {
+      mqttOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  });
+}
