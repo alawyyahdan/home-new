@@ -185,20 +185,11 @@ section ul {
   padding: 0;
 }
 section ul li {
-  position: relative;
-  padding-left: 1rem;
   padding-top: 0.28rem;
   padding-bottom: 0.28rem;
   font-size: 0.97rem;
   line-height: 1.65;
-  display: block; /* Allows inline elements to wrap naturally */
-}
-section ul li::before {
-  content: "•";
-  color: var(--muted);
-  position: absolute;
-  left: 0;
-  top: 0.28rem;
+  display: block;
 }
 
 /* Item title (no-link) */
@@ -602,6 +593,31 @@ section ul li::before {
 @keyframes confettiFall {
   0%   { top: -10px; opacity: 1; transform: rotate(0deg) translateX(0); }
   100% { top: 100vh;  opacity: 0; transform: rotate(720deg) translateX(35px); }
+}
+
+/* ═══ PROJECT TOOLTIP ═══ */
+#proj-tooltip {
+  position: fixed;
+  z-index: 4000;
+  max-width: 300px;
+  padding: 0.6rem 0.85rem;
+  background: var(--modal-bg);
+  color: var(--muted);
+  font-family: var(--f-sans);
+  font-size: 0.74rem;
+  line-height: 1.55;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  will-change: opacity, transform;
+}
+#proj-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ═══ RESPONSIVE ═══ */

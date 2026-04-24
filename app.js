@@ -319,3 +319,58 @@ if (mqttOverlay) {
     }
   });
 }
+
+
+/* ═══════════════════════ PROJECT TOOLTIP ═══════════════════════ */
+(function initProjTooltip() {
+  const tip = document.getElementById('proj-tooltip');
+  if (!tip) return;
+
+  const OFFSET_X = 14;
+  const OFFSET_Y = 16;
+
+  let rafId = null;
+  let mouseX = 0;
+  let mouseY = 0;
+
+  function positionTip() {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const tw = tip.offsetWidth;
+    const th = tip.offsetHeight;
+
+    let x = mouseX + OFFSET_X;
+    let y = mouseY + OFFSET_Y;
+
+    // Clamp to viewport
+    if (x + tw > vw - 12) x = mouseX - tw - OFFSET_X;
+    if (y + th > vh - 12) y = mouseY - th - OFFSET_Y;
+
+    tip.style.left = x + 'px';
+    tip.style.top  = y + 'px';
+  }
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (tip.classList.contains('visible')) {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(positionTip);
+    }
+  });
+
+  // Attach to all elements with data-tooltip inside #projects
+  const section = document.getElementById('projects');
+  if (!section) return;
+
+  section.querySelectorAll('[data-tooltip]').forEach(el => {
+    el.addEventListener('mouseenter', e => {
+      tip.textContent = el.dataset.tooltip;
+      positionTip();
+      tip.classList.add('visible');
+    });
+    el.addEventListener('mouseleave', () => {
+      tip.classList.remove('visible');
+    });
+  });
+})();
