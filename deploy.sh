@@ -12,7 +12,7 @@ fi
 
 echo -e "\n[1/7] 🔄 Memperbarui package list & install dependency dasar..."
 apt update -y
-apt install curl git nginx -y
+apt install curl git -y
 
 echo -e "\n[2/7] 📦 Mengecek & Install Node.js..."
 if ! command -v node &> /dev/null; then
@@ -56,47 +56,12 @@ pm2 start ecosystem.config.js
 pm2 save
 pm2 startup systemd -u root --hp /root 2>/dev/null | grep "sudo env PATH" | bash
 
-echo -e "\n[7/7] ⚙️ Konfigurasi Nginx sebagai Reverse Proxy..."
-DOMAIN_OR_IP=$(curl -s ifconfig.me || echo "localhost")
-
-cat > /etc/nginx/sites-available/home-portfolio <<EOF
-server {
-    listen 80;
-    server_name _; # Menerima request dari IP atau domain apapun
-
-    # Routing Frontend (Port 1001)
-    location / {
-        proxy_pass http://localhost:1001;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host \$host;
-        proxy_cache_bypass \$http_upgrade;
-    }
-
-    # Routing Backend QRIS (Port 1002)
-    location /api/ {
-        proxy_pass http://localhost:1002;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host \$host;
-        proxy_cache_bypass \$http_upgrade;
-    }
-}
-EOF
-
-# Enable Nginx Config
-ln -sf /etc/nginx/sites-available/home-portfolio /etc/nginx/sites-enabled/
-rm -f /etc/nginx/sites-enabled/default
-
-# Restart Nginx
-nginx -t && systemctl restart nginx
 
 echo -e "\n==============================================="
 echo " 🎉 AUTO DEPLOY SELESAI! "
 echo "==============================================="
-echo "🌐 Akses Web: http://$DOMAIN_OR_IP"
-echo "⚙️ Akses API: http://$DOMAIN_OR_IP/api/"
+DOMAIN_OR_IP=$(curl -s ifconfig.me || echo "localhost")
+echo "🌐 Akses Web (Frontend): http://$DOMAIN_OR_IP:1001"
+echo "⚙️ Akses API (Backend): http://$DOMAIN_OR_IP:1002"
 echo "✅ PM2 Apps: (Frontend: 1001, Backend: 1002)"
 echo "❗ PENTING: Jangan lupa edit backend-qris/.env untuk mengubah API_KEY Anda."

@@ -112,7 +112,7 @@ pdfOverlay?.addEventListener('click', e => { if (e.target === pdfOverlay) closeP
 const donateOverlay = document.getElementById('donate-overlay');
 const step1 = document.getElementById('donate-step1');
 const step2 = document.getElementById('donate-step2');
-const QRIS_URL = 'https://apiqris.bica.ca';
+const QRIS_URL = window.location.protocol + '//' + window.location.hostname + ':1002';
 
 window.currentTransactionId = null;
 window.pollInterval = null;
