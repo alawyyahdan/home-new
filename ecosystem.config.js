@@ -3,17 +3,17 @@ module.exports = {
     {
       name: 'home-portfolio',
       script: './server.js',
-      cwd: '/home/adan/Project/Home',
+      cwd: __dirname,
       watch: false,
       env: {
-        PORT: 3005,
+        PORT: 1001,
         NODE_ENV: 'production',
       },
     },
     {
       name: 'backend-qris',
       script: './backend-qris/index.js',
-      cwd: '/home/adan/Project/Home',
+      cwd: __dirname,
       watch: false,
       env_file: './backend-qris/.env',
       env: {

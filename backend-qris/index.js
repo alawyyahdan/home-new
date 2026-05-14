@@ -51,5 +51,5 @@ app.post('/api/callback', (req, res) => {
   }
 });
 
-const PORT = 3010;
+const PORT = process.env.PORT || 1002;
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
