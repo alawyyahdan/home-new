@@ -620,6 +620,62 @@ section ul li {
   transform: translateY(0);
 }
 
+/* ── MQTT Credentials Blur Effect ── */
+.creds-blur-box {
+  position: relative;
+  background: var(--surface);
+  padding: 1.1rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s var(--ease), border-color 0.2s;
+}
+.creds-blur-box:hover { border-color: var(--muted); }
+
+.creds-blur-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(252, 251, 248, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.35s ease, visibility 0.35s;
+}
+[data-theme="dark"] .creds-blur-overlay { background: rgba(24, 25, 26, 0.4); }
+
+.creds-blur-overlay span {
+  font-family: var(--f-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  background: var(--bg);
+  padding: 5px 12px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid var(--border);
+}
+
+.creds-blur-box.revealed .creds-blur-overlay {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.creds-content-inner {
+  filter: blur(5px);
+  transition: filter 0.4s ease;
+  user-select: none;
+}
+.creds-blur-box.revealed .creds-content-inner {
+  filter: none;
+  user-select: text;
+}
+
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 520px) {
   html { font-size: 16px; }

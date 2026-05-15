@@ -283,7 +283,11 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { 
     closePdf(); 
     closeDonate(); 
-    document.getElementById('mqtt-overlay')?.classList.add('hidden');
+    if (mqttOverlay && !mqttOverlay.classList.contains('hidden')) {
+      mqttOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+      resetMqttCreds();
+    }
   }
 });
 
@@ -302,20 +306,33 @@ if (btnMqtt) {
   });
 }
 
-if (btnCloseMqtt) {
-  btnCloseMqtt.addEventListener('click', () => {
-    if (mqttOverlay) {
-      mqttOverlay.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-  });
-}
-
 if (mqttOverlay) {
   mqttOverlay.addEventListener('click', e => {
     if (e.target === mqttOverlay) {
       mqttOverlay.classList.add('hidden');
       document.body.style.overflow = '';
+      resetMqttCreds();
+    }
+  });
+}
+
+const mqttCredsBox = document.getElementById('mqtt-creds-box');
+if (mqttCredsBox) {
+  mqttCredsBox.addEventListener('click', () => {
+    mqttCredsBox.classList.add('revealed');
+  });
+}
+
+function resetMqttCreds() {
+  if (mqttCredsBox) mqttCredsBox.classList.remove('revealed');
+}
+
+if (btnCloseMqtt) {
+  btnCloseMqtt.addEventListener('click', () => {
+    if (mqttOverlay) {
+      mqttOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+      resetMqttCreds();
     }
   });
 }
