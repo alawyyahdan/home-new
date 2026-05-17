@@ -47,17 +47,6 @@ app.post('/api/status', async (req, res) => {
   }
 });
 
-// Callback / Webhook dari SiTranfer
-app.post('/api/callback', (req, res) => {
-  const cb = req.body;
-  if (cb && cb.success && cb.data?.status === 'success') {
-    console.log('✅ CALLBACK: Pembayaran SUCCESS TRX:', cb.data.transaction_id);
-    res.json({ status: 'ok' });
-  } else {
-    res.json({ status: 'ignored' });
-  }
-});
-
 // ─── Static Frontend ─────────────────────────────────────────────────────────
 
 app.use(express.static(__dirname));
