@@ -202,7 +202,7 @@ document.getElementById('btn-go-qris')?.addEventListener('click', async () => {
 
       // Start polling
       if (window.pollInterval) clearInterval(window.pollInterval);
-      window.pollInterval = setInterval(() => checkQRISStatus(window.currentTransactionId), 5000);
+      window.pollInterval = setInterval(() => checkQRISStatus(window.currentTransactionId), 2000);
 
     } else {
       throw new Error(data.message || 'Generation failed');
